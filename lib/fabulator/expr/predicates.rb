@@ -28,15 +28,15 @@ module Fabulator
                 # if string and non-blank, then keep
                 unified_type = Fabulator::TagLib.unify_types(res.collect{ |r| r.vtype })
                 case unified_type.join('') 
-                  when FAB_NS+'boolean':
+                  when FAB_NS+'boolean' then
                     if res.select{ |r| r.to([FAB_NS, 'boolean']).value }.size > 0
                       n_p << ctx.root
                     end
-                  when FAB_NS+'numeric':
+                  when FAB_NS+'numeric' then
                     if res.select{ |r| r.to([FAB_NS,'numeric']).value == ctx.position }.size > 0
                       n_p << ctx.root
                     end
-                  when FAB_NS+'string':
+                  when FAB_NS+'string' then
                     if res.select{ |r| r.to_s.size > 0 }.size > 0
                       n_p << ctx.root
                     end

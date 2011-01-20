@@ -119,15 +119,15 @@ module Fabulator
           value = value.first
         end
         case opts[:type]
-          when :boolean:
+          when :boolean then
             if value =~ /^[YyTt1]/ || value =~ /^on/i
               value = true
             else
               value = false
             end
-          when :numeric:
+          when :numeric then
             value = value.to_f
-          when :integer:
+          when :integer then
             value = value.to_i
         end
       end

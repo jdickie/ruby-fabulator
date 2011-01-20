@@ -85,15 +85,15 @@ module Fabulator
         context.in_context do |ctx|
           args = args.flatten
           case fctn_type
-            when :function:
+            when :function then
               args.size.times do |i|
                 ctx.set_var((i+1).to_s, args[i])
               end
               ctx.set_var('0', args)
               res = fctn.run(ctx)
-            when :mapping:
+            when :mapping then
               res = args.collect{ |a| fctn.run(ctx.with_root(a)) }.flatten
-            when :reduction:
+            when :reduction then
               ctx.set_var('0', args.flatten)
               res = fctn.run(ctx)
           end
